@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form
+      (ngSubmit)="onSubmit(f)"
+      #f="ngForm"
+    >
       <div class="row">
-        <div class="col-sm-5 form-group">
+        <div class="col-sm-6 form-group">
           <label for="name">Name</label>
           <input
             type="text"
@@ -13,7 +16,7 @@
             required
           >
         </div>
-        <div class="col-sm-2 form-group">
+        <div class="col-sm-3 form-group">
           <label for="amount">Amount</label>
           <input
             type="number"
@@ -25,21 +28,69 @@
             pattern="^[1-9]+[0-9]*$"
           >
         </div>
+        <div class="col-sm-3 form-group">
+          <label for="amount">Quantity</label>
+          <select
+            id="type"
+            class="form-control"
+            name="type"
+            ngModel
+            required
+          >
+            <option value="Numbers">Numbers</option>
+            <option value="Liters">Liters</option>
+            <option value="Kilograms">Kilograms</option>
+          </select>
+        </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button
-            class="btn btn-success"
-            type="submit"
-            [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add' }}</button>
-          <button
-            class="btn btn-danger"
-            type="button"
-            (click)="onDelete()"
-            *ngIf="editMode">Delete</button>
-          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+          <div class="btn-toolbar">
+            <button
+              class="btn btn-success"
+              type="submit"
+              [disabled]="!f.valid"
+            >{{ editMode ? 'Update' : 'Add' }}</button>
+            <button
+              class="btn btn-danger"
+              type="button"
+              (click)="confirmDelete()"
+              *ngIf="editMode"
+            >Delete</button>
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onClear()"
+            >Clear</button>
+          </div>
         </div>
       </div>
     </form>
   </div>
 </div>
+
+
+<p-confirmDialog
+  [transitionOptions]="'400ms cubic-bezier(0.25, 0.8, 0.25, 1)'"
+  #cd
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+>
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      label="No"
+      (click)="cd.reject()"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      label="Yes"
+      (click)="cd.accept()"
+      class="ui-button-danger"
+    ></button>
+  </p-footer>
+</p-confirmDialog>

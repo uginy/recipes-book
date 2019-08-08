@@ -1,0 +1,24 @@
+<p-confirmDialog
+  [transitionOptions]="'400ms cubic-bezier(0.25, 0.8, 0.25, 1)'"
+  #cd
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+>
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      label="No"
+      (click)="cd.reject()"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      label="Yes"
+      (click)="cd.accept()"
+      class="ui-button-danger"
+    ></button>
+  </p-footer>
+</p-confirmDialog>

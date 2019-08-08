@@ -1,18 +1,21 @@
 <ng-template appPlaceholder></ng-template>
+<h2 *ngIf="isLoginMode; else signUpBlock">Login</h2>
+<ng-template #signUpBlock>
+  <h2>Signup</h2>
+</ng-template>
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <!-- <div class="alert alert-danger" *ngIf="error">
-      <p>{{ error }}</p>
-    </div> -->
-    <!-- <app-alert
-      [message]="error"
-      *ngIf="error"
-      (close)="onHandleError()"
-    ></app-alert> -->
-    <div *ngIf="isLoading" style="text-align: center;">
+    <div
+      *ngIf="isLoading"
+      style="text-align: center;"
+    >
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+    <form
+      #authForm="ngForm"
+      (ngSubmit)="onSubmit(authForm)"
+      *ngIf="!isLoading"
+    >
       <div class="form-group">
         <label for="email">E-Mail</label>
         <input
@@ -46,7 +49,11 @@
           {{ isLoginMode ? 'Login' : 'Sign Up' }}
         </button>
         |
-        <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+        <button
+          class="btn btn-primary"
+          (click)="onSwitchMode()"
+          type="button"
+        >
           Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
         </button>
       </div>

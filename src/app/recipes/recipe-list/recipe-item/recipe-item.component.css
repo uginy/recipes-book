@@ -1,0 +1,12 @@
+img {
+  border: 1px solid silver;
+  border-radius: 3px;
+}
+
+div.recipe-item {
+  display: flex;
+}
+
+div.recipe-item div {
+  flex: 1;
+}

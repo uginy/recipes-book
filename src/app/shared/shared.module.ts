@@ -5,8 +5,7 @@ import { AlertComponent } from './alert/alert.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { PlaceholderDirective } from './placeholder/placeholder.directive';
 import { DropdownDirective } from './dropdown.directive';
-import { LoggingService } from '../logging.service';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AlertComponent,
@@ -14,15 +13,15 @@ import { LoggingService } from '../logging.service';
     PlaceholderDirective,
     DropdownDirective
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ConfirmDialogModule],
   exports: [
     AlertComponent,
     LoadingSpinnerComponent,
     PlaceholderDirective,
     DropdownDirective,
-    CommonModule
+    CommonModule,
+    ConfirmDialogModule
   ],
-  entryComponents: [AlertComponent],
-  providers: [LoggingService]
+  entryComponents: [AlertComponent]
 })
 export class SharedModule {}

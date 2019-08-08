@@ -10,7 +10,7 @@ import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SharedModule } from '../shared/shared.module';
-
+import { TruncatePipe } from '@app/shared/pipes/truncate.pipe';
 @NgModule({
   declarations: [
     RecipesComponent,
@@ -18,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    TruncatePipe
   ],
   imports: [
     RouterModule,

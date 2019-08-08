@@ -1,4 +1,3 @@
-import { DataStorageService } from './../../shared/data-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-start.component.css']
 })
 export class RecipeStartComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }

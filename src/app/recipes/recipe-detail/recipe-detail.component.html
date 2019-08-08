@@ -1,38 +1,50 @@
 <div class="row">
   <div class="col-xs-12">
-    <img
-      [src]="recipe.imagePath"
-      alt="{{ recipe.name }}"
-      class="img-responsive"
-      style="max-height: 300px;">
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
     <h1>{{ recipe.name }}</h1>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive"
+      style="max-height: 300px;"
+    >
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
     <div
       class="btn-group"
-      appDropdown>
+      role="group"
+      aria-label="..."
+    >
       <button
         type="button"
-        class="btn btn-primary dropdown-toggle">
-        Manage Recipe <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
-        <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Recipe</a></li>
-        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Recipe</a></li>
-      </ul>
+        class="btn btn-primary"
+        (click)="onAddToShoppingList()"
+      >To Shopping List</button>
+      <button
+        type="button"
+        class="btn btn-info"
+        (click)="onEditRecipe()"
+      >Edit Recipe</button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="confirm()"
+      >Delete Recipe</button>
     </div>
   </div>
 </div>
+<br>
 <div class="row">
   <div class="col-xs-12">
-    {{ recipe.description }}
+    <div class="well">
+      {{ recipe.description }}
+    </div>
   </div>
 </div>
 <div class="row">
@@ -40,9 +52,35 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }} - {{ ingredient.amount }}
+        *ngFor="let ingredient of recipe.ingredients"
+      >
+        {{ ingredient.name }} - {{ ingredient.amount }} ({{ ingredient.type }})
       </li>
     </ul>
   </div>
 </div>
+
+<p-confirmDialog
+  [transitionOptions]="'400ms cubic-bezier(0.25, 0.8, 0.25, 1)'"
+  #cd
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+>
+  <p-footer>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-times"
+      label="No"
+      (click)="cd.reject()"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-check"
+      label="Yes"
+      (click)="cd.accept()"
+      class="ui-button-danger"
+    ></button>
+  </p-footer>
+</p-confirmDialog>
